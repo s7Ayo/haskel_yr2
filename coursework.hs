@@ -24,8 +24,8 @@
   isLeapYear year
       | year `mod` 400 == 0 = True
       | year `mod` 100 == 0 = False
-      | year `mod` 4   == 0 = True
-      | otherwise          = False
+      | year `mod` 4  == 0 = True
+      | otherwise = False
   
 
   -- Function 5: Implement a function that searches a list for an item
@@ -39,4 +39,22 @@
   findElem x ys = find x ys 0
 
   -- Function 6: Implement a pangram checker 
-  
+  type Alphabet = [Char]
+
+  toLower :: Char -> Char
+  toLower c
+    | c >= 'A' && c <= 'Z' = toEnum (fromEnum c + 32)
+    | otherwise = c
+
+  toLowerAlphabet :: Alphabet -> Alphabet
+  toLowerAlphabet = map toLower
+
+  removeDuplicates :: Eq a => [a] -> [a]
+  removeDuplicates = foldl (\acc x -> if x `elem` acc then acc else acc++[x]) []
+
+  countLetters :: Alphabet -> Int
+  countLetters = length . removeDuplicates
+
+  isPangram :: [Char] -> Bool
+  isPangram input = countLetters (toLowerAlphabet input) == 26
+
