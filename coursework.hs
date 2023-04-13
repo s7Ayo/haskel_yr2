@@ -43,14 +43,14 @@ module A1E1_21484872 (
   
 
   -- Function 5: Implement a function that searches a list for an item
-  find :: Eq a => a -> [a] -> Int -> Int
-  find _ [] _ = -1
-  find x (y:ys) i
+  searchs :: Eq a => a -> [a] -> Int -> Int
+  searchs _ [] _ = -1
+  searchs x (y:ys) i
       | x == y    = i
-      | otherwise = find x ys (i + 1)
+      | otherwise = searchs x ys (i + 1)
 
-  findElem :: Eq a => a -> [a] -> Int
-  findElem x ys = find x ys 0
+  find :: Eq a => a -> [a] -> Int
+  find x ys = searchs x ys 0
 
   -- Function 6: Implement a pangram checker 
   type Alphabet = [Char]
