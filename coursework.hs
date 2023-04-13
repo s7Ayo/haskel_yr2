@@ -1,6 +1,20 @@
+module A1E1_21484872 (
+  triple,
+  collatz,
+  halve,
+  isLeapYear,
+  find,
+  isPangram
+) where
+  
+  
+  
+  
+  
+  
   --  Function 1: Implement a function tripling a given numerical input 
   triple :: Num a => a -> a
-  triple x = x * 3
+  triple x = x * 3 -- x is tripled 
   
   --  Function 2: Implement the Collatz conjecture
   collatz :: Integral a => a -> a
