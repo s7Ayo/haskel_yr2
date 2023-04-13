@@ -53,22 +53,10 @@ module A1E1_21484872 (
   find x ys = searchs x ys 0
 
   -- Function 6: Implement a pangram checker 
-  type Alphabet = [Char]
-
-  toLower :: Char -> Char
-  toLower c
-    | c >= 'A' && c <= 'Z' = toEnum (fromEnum c + 32)
-    | otherwise = c
-
-  toLowerAlphabet :: Alphabet -> Alphabet
-  toLowerAlphabet = map toLower
-
-  removeDuplicates :: Eq a => [a] -> [a]
-  removeDuplicates = foldl (\acc x -> if x `elem` acc then acc else acc++[x]) []
-
-  countLetters :: Alphabet -> Int
-  countLetters = length . removeDuplicates
-
-  isPangram :: [Char] -> Bool
-  isPangram input = countLetters (toLowerAlphabet input) == 26
-
+  isPangram :: String -> Bool
+  isPangram s = all (`elem` map toLower s) ['a'..'z']
+    where
+      toLower c
+        | c `elem` ['A'..'Z'] = toEnum (fromEnum c + 32)
+        | otherwise = c
+    
